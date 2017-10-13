@@ -1,8 +1,10 @@
 # libtuntap regression tests CMakeLists.txt
 # =========================================
 
+cmake_minimum_required(VERSION 2.8)
+
 enable_testing()
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # C based tests
@@ -67,6 +69,7 @@ endif()
 # Only FreeBSD and OpenBSD have a tuntap_set_descr() implemented
 if(NOT FreeBSD AND NOT OpenBSD)
   set_tests_properties(test44 PROPERTIES WILL_FAIL true)
+  set_tests_properties(test46 PROPERTIES WILL_FAIL true)
 endif()
 
 # Windows work-in-progress (tap)
